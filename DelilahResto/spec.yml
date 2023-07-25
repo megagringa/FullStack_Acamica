@@ -1,0 +1,547 @@
+openapi: 3.0.0
+servers:
+# Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/megagringa/delilah-resto/1.0.0
+  - description: Servidor local para el API
+    url: https://localhost:3000
+    
+info:
+  description: API for the delilah resto project, which handles restaurant orders, can register to place orders and administrators can upload new meals to the application 
+  version: "1.0.0"
+  title: Delilah Resto
+  
+paths:
+  /users/signin:
+    post:
+      tags:
+        - clients
+        - admins
+      summary: authenticate users or administrators
+      requestBody:
+        content:
+           application/json:
+              schema:
+                properties:
+                  user_mail:
+                    type: string
+                    example: pedro@correo.com
+                  user_password:
+                    type: string
+                    example: 1234578Pedro
+        description: user credentials
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  token:
+                      type: string
+                      example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+                  user:
+                    $ref: '#/components/schemas/User'
+          description: identificated user
+        '401':
+          description: user does not exist or invalid credentials
+  /users:
+    get:
+      tags: 
+        - admins
+      summary: get all users
+      security: 
+        - autenticationJWT: []
+      responses:
+        '200':
+          description: meal list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '500':
+          description: internal error
+    post:
+      tags:
+        - clients
+        - admins
+      summary: register users or administrators
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        description: User data or admin data
+      responses:
+        '200':
+          description: user successfully created
+        '500':
+          description: error creating user. internal error
+          
+  /users/logout:
+    post:
+      tags: 
+        - admins
+        - clients
+      summary: logout an user
+      security: 
+        - autenticationJWT: []
+      responses:
+        '200':
+          description: user logout
+        '500':
+          description: internal error
+   
+  /users/{idUser}:
+    get:
+      tags:
+        - clients
+        - admins
+      parameters:
+        - name: idUser
+          in: path
+          required: true
+          description: unique user id
+          schema:
+            type: string
+      summary: get a user
+      security: 
+        - autenticationJWT: []
+      responses:
+        '200':
+          description: user with the specified id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '500':
+          description: internal error
+        '404':
+          description: user not found
+    put:
+      tags:
+        - clients
+        - admins
+      summary: update a user
+      parameters:
+        - name: idUser
+          in: path
+          required: true
+          description: unique user id
+          schema:
+            type: string
+      description: update a user to the system
+      security:
+        - autenticationJWT: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        description: user to update
+      responses:
+        '200':
+          description: user updated
+        '401':
+          description: Unauthorized user to do this operation or invalid token
+        '404':
+          description: user not found
+    delete:
+      tags:
+        - admins
+      summary: delete a user
+      parameters:
+        - name: idUser
+          in: path
+          required: true
+          description: unique user id
+          schema:
+            type: string
+      description: delete a user to the system
+      security:
+        - autenticationJWT: []
+      responses:
+        '200':
+          description: user deleted
+        '401':
+          description: Unauthorized user to do this operation or invalid token
+        '404':
+          description: user not found
+  /products:
+    get:
+      tags:
+        - clients
+        - admins
+      summary: get list of all products
+      responses:
+        '200':
+          description: meal list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        '500':
+          description: internal error
+    post:
+      tags:
+        - admins
+      summary: adds a product
+      description: Adds a product to the system
+      security: 
+        - autenticationJWT: []
+      responses:
+        '201':
+          description: item created
+        '400':
+          description: invalid input, object invalid
+        '409':
+          description: an existing product already exists
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+        description: product to add
+  
+  /products/{idProduct}:
+    get:
+      tags:
+        - clients
+        - admins
+      parameters:
+        - name: idProduct
+          in: path
+          required: true
+          description: unique product id
+          schema:
+            type: string
+      summary: get a product
+      responses:
+        '200':
+          description: product with the specified id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '500':
+          description: internal error
+        '404':
+          description: product not found
+    put:
+      tags:
+        - admins
+      summary: update a product
+      parameters:
+        - name: idProduct
+          in: path
+          required: true
+          description: unique product id
+          schema:
+            type: string
+      description: update a product to the system
+      security:
+        - autenticationJWT: []
+      responses:
+        '200':
+          description: product updated
+        '401':
+          description: Unauthorized user to do this operation or invalid token
+        '404':
+          description: product not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+        description: product to update
+    delete:
+      tags:
+        - admins
+      summary: delete a product
+      parameters:
+        - name: idProduct
+          in: path
+          required: true
+          description: unique product id
+          schema:
+            type: string
+      description: delete a product to the system
+      security:
+        - autenticationJWT: []
+      responses:
+        '200':
+          description: product deleted
+        '401':
+          description: Unauthorized user to do this operation or invalid token
+        '404':
+          description: product not found
+      
+  /orders:
+    get:
+      tags:
+        - clients
+        - admins
+      summary: get list of all orders
+      security:
+        - autenticationJWT: []
+      responses:
+        '200':
+          description: order list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+        '500':
+          description: internal error
+    post:
+      tags:
+        - clients
+      summary: adds a order
+      description: Adds a order to the system
+      security: 
+        - autenticationJWT: []
+      responses:
+        '201':
+          description: order created
+        '400':
+          description: invalid input, object invalid
+        '401':
+          description: Unauthorized user to do this operation or invalid token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+        description: order to add
+   
+  /orders/{idOrder}:
+    get:
+      tags:
+        - clients
+        - admins
+      summary: get a order
+      security:
+        - autenticationJWT: []
+      parameters:
+        - name: idOrder
+          in: path
+          required: true
+          description: unique order id
+          schema:
+            type: string
+      responses:
+        '200':
+          description: order with the specific id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '500':
+          description: internal error
+        '401':
+          description: Unauthorized user to do this operation or invalid token
+        '404':
+          description: order not found
+    post:
+      tags:
+        - clients
+      summary: adds a order
+      description: Adds a order to the system
+      parameters:
+        - name: idOrder
+          in: path
+          required: true
+          description: unique order id
+          schema:
+            type: string
+      security: 
+        - autenticationJWT: []
+      responses:
+        '201':
+          description: order created
+        '400':
+          description: invalid input, object invalid
+        '401':
+          description: Unauthorized user to do this operation or invalid token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+        description: order to add
+    put:
+      tags:
+        - admins
+      summary: update specific order state
+      parameters:
+        - name: idOrder
+          in: path
+          required: true
+          description: unique order id
+          schema:
+            type: string
+      description: update specific order state
+      security:
+        - autenticationJWT: []
+      responses:
+        '200':
+          description: order updated
+        '401':
+          description: Unauthorized user to do this operation or invalid token
+        '404':
+          description: order not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                order_state:
+                  type: string
+                  example: 'cooking'
+        description: order state to update
+    delete:
+      tags:
+        - admins
+      summary: delete specific order 
+      parameters:
+        - name: idOrder
+          in: path
+          required: true
+          description: unique order id
+          schema:
+            type: string
+      description: delete specific order
+      security:
+        - autenticationJWT: []
+      responses:
+        '200':
+          description: order deleted
+        '401':
+          description: Unauthorized user to do this operation or invalid token
+        '404':
+          description: order not found
+
+components:
+  schemas:
+    Product:
+      type: object
+      required:
+        - product_id
+        - product_name
+        - product_price
+        - product_description
+      properties:
+        product_id:
+          type: integer
+          format: int64
+          example: 1
+        product_name:
+          type: string
+          example: Hamburguer
+        product_price:
+          type: number
+          format: double
+          example: 20000,00
+        product_description:
+          type: string
+          example: Simple cheese burger 120g hamburger with mozzarella cheese, tomato sauce, mayonnaise, mustard, artisan bread, pickles and tomato, onion and romaine lettuce
+    User:
+      type: object
+      required: 
+        - user_id
+        - user_name
+        - user_lastname
+        - user_mail
+        - user_password
+        - user_address
+      properties:
+        user_id:
+          type: integer
+          format: int64
+        user_name:
+          type: string
+          example: Pedro
+        user_lastname:
+          type: string
+          example: Ramirez
+        user_mail:
+          type: string
+          format: mail
+          example: pedro@correo.com
+        user_phone:
+          type: integer
+          example: 75123452
+        user_password:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+        user_address:
+          type: string
+          example: calle 34 # 48 51
+        user_active:
+          type: boolean
+          example: false
+        
+    Order:
+      type: object
+      required: 
+        - order_id
+        - order_order_time
+        - order_state
+        - order_description
+        - order_form_payment
+        - order_total_price
+        - order_user_id
+      properties:
+        order_id: 
+          type: integer
+          format: int64
+          example: 3
+        order_order_time:
+          type: string
+          format: data-time
+        order_state:
+          type: string
+          example: Enviando
+        order_description:
+          type: string
+        order_form_payment:
+          type: string
+          example: efectivo
+        order_total_price:
+          type: number
+          format: double
+        order_user_id: 
+          type: integer
+          format: int64
+        order_products:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductOrder'
+    ProductOrder:
+      type: object
+      required: 
+        - order_id
+        - product_id
+        - quantity
+      properties:
+        order_id: 
+          type: integer
+          format: int64
+          example: 3
+        product_order:
+          $ref: '#/components/schemas/Product'
+        quantity:
+          type: integer
+          format: int64
+  securitySchemes:
+    autenticationJWT:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      
+     

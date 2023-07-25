@@ -1,0 +1,32 @@
+{
+  "name": "delilah-resto",
+  "version": "1.0.0",
+  "description": "API for the delilah resto project, which handles restaurant orders, can register to place orders and administrators can upload new meals to the application ",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/megagringa/DelilahResto.git"
+  },
+  "author": "Juan David Viuche",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/megagringa/DelilahResto/issues"
+  },
+  "homepage": "https://github.com/megagringa/DelilahResto#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.13"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

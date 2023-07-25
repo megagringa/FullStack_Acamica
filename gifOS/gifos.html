@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>gifOS</title>
+
+  <link id="estilos" rel="stylesheet" href="./css/style.css" />
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+  <!--Barra Superior-->
+  <div class="navbar">
+    <nav>
+      <p>
+        ¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.///(<a href="https://megagringa.github.io/Presentación/index.html">PRESENTACION</a>)/// Número
+        de visitas: 12.765.803
+      </p>
+    </nav>
+  </div>
+  <!--Contenedor-->
+  <div class="contenedor">
+    
+    <!--Barra de Herramientas-->
+    <div class="seccion-logo">
+      <div class="logo" id="logo">
+      </div>
+      <div class="botones">
+        <button id="btnCrearGuifos">Crear Guifos</button>
+        <button id="btnCambiarTema">Elegir Tema<i class="fa fa-caret-down"></i></button>
+        <div class="contentTema" id="contentTema" style="visibility: hidden;">
+        </div>
+        <a id="guifos">Mis Guifos</a>
+      </div>
+    </div>
+    <div class="inicio" id="inicio">
+
+      <!--Buscar-->
+      <div class="buscar">
+        <label class="lbl ml-1">Buscar</label>
+        <div class="formBuscar">
+          <input type="text" id="txtBuscar" placeholder="Busca gifs, hashtags, temas, busca lo que quieras…" />
+          <button id="btnBuscar" disabled>
+            <div class="lupa"></div>
+            Buscar
+          </button>
+        </div>
+      </div>
+      <div class="filtro_buscar" id="filtro">
+      </div>
+
+      <!--Resultados Sugeridos-->
+      <div id="tarjetaBusqueda" class="tarjetasBusqueda">
+      </div>
+      <div class="tendencias">
+        <input type="text" id="txtBusqueda" disabled placeholder="Resultados:" />
+      </div>
+      <div id="result_busqueda" class="contentResul">
+      </div>
+
+      <!--Sugeridos-->
+      <div class="sugeridos">
+        <input type="text" disabled placeholder="Hoy te sugerimos:" />
+      </div>
+      <div class="resultados" id="resultados">
+      </div>
+
+      <!--Tendencias-->
+      <div class="tendencias">
+        <input type="text" id="tendencias" disabled placeholder="Tendencias:" />
+      </div>
+
+      <!--Resultados Tendendcias-->
+      <div id="resultTend" class="contentResul">
+        <!-- aquí se cargan img de resultados de la busqueda -->
+      </div>
+    </div>
+
+    <!--Guifos Creados-->
+    <div class="misGuifo" id="misGuifo">
+      <input type="text" id="txtGuifosIndex" disabled placeholder="Mis guifos" />
+      <div id="guifosStorage" class="contentResul">
+      </div>
+    </div>
+  </div>
+  <script type="module" src="./js/app.js"></script>
+  <script type="module" src="./js/giphy.js"></script>
+</body>
+
+</html>
