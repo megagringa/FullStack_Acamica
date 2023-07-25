@@ -1,15 +1,18 @@
 ## Sitio Web "PodCast".
 
 
-Trabajo número 1 del curso de Desarrollo Web Full Stack de Acámica.
+Trabajo número 2 del curso de Desarrollo Web Full Stack de Acámica.
 
-## Tecnologías
+## [gifOS](https://github.com/megagringa/FullStack_Acamica/blob/main/gifOS/gifos.html)
+Redireccion al proyecto.
+
+## Tecnologías.
 
 - HTML5
 - CSS3
+- JS(Javascript)
 - FontAwesome
 - Google Fonts
-- Clip-Path
-- Responsive Design
+- RecordRTC para obtener stream de video a través de la cámara del dispositivo para ver durante el preview de la grabación
 
-El objetivo era recrear una Landing Page para un canal de podcast ficticio del cual se provee el diseño de interfaces Mobile First. El sitio está construido utilizando HTML y CSS para ejercitar buenas prácticas de desarrollo web adaptandolo con Responsive Design.
+El objetivo del trabajo es generar una página web incorporando los conocimientos adquiridos en la primera etapa agregando JS que permita obtener datos de la API de giphy a través de un request a la misma.

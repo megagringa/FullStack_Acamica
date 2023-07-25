@@ -34,7 +34,7 @@ Dirígete a [XAMPP](https://www.apachefriends.org/es/index.html) y sigue las ins
 ## Para empezar 
 - Clona el repositorio
 ```
-https://github.com/megagringa/FullStack_Acamica/DelilahResto.git
+https://https://github.com/megagringa/FullStack_Acamica/tree/main/DelilahResto.git
 ```
 - Ejecutar XAMPP u otro programa de MySQL y Apache.
 - Importar la base de datos "database.sql" que se está dentro de la carpeta "database" en la raiz del proyecto, este archivo contiene la creacion de tablas en mysql y la insercion de datos de prueba para la verificacion del correcto funcionamiento del API
