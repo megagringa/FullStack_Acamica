@@ -20,9 +20,6 @@ Tecnologías usadas en los royectos:
 
 Proyectos realizados:
 
- - Proyecto 1: [PodCast](ithub.com/megagringa/FullStack_Acamica/blob/main/PodcastJPL/podcastjpl.html) 
- - [GitHub](https://github.com/megagringa/FullStack_Acamica/tree/main/PodcastJPL) 
- - Proyecto 2: [gifOs](https://github.com/megagringa/FullStack_Acamica/blob/main/gifOS/gifos.html) 
- - [GitHub](https://github.com/megagringa/FullStack_Acamica/tree/main/gifOS) 
- - Proyecto 3: [DelilahResto](https://github.com/megagringa/FullStack_Acamica/tree/main/DelilahResto) 
- - [GitHub](https://github.com/megagringa/FullStack_Acamica/tree/main/DelilahResto) 
+ - Proyecto 1: PodCast - [GitHub](https://github.com/megagringa/FullStack_Acamica/tree/main/PodcastJPL) 
+ - Proyecto 2: gifOs - [GitHub](https://github.com/megagringa/FullStack_Acamica/tree/main/gifOS) 
+ - Proyecto 3: DelilahResto - [GitHub](https://github.com/megagringa/FullStack_Acamica/tree/main/DelilahResto) 
