@@ -1,6 +1,6 @@
 # FullStack_Acamica
 
-## [ACAMICA](https://megagringa.github.io/FullStack_Acamica/index.html)
+## [ACAMICA](https://megagringa.github.io/FullStack_Acamica/index.html) <-- Página Web
 Redireccion a la página.
 
 Se realizo este portafolio armando el Bootcamp de ACAMICA realizado en el año 2019 hasta el año 2020.
@@ -20,6 +20,6 @@ Tecnologías usadas en los royectos:
 
 Proyectos realizados:
 
- - Proyecto 1: PodCast - [GitHub](https://github.com/megagringa/FullStack_Acamica/tree/main/PodcastJPL) 
- - Proyecto 2: gifOs - [GitHub](https://github.com/megagringa/FullStack_Acamica/tree/main/gifOS) 
+ - Proyecto 1: PodCast - [Demo](https://megagringa.github.io/FullStack_Acamica/PodcastJPL/podcastjpl.html) - [GitHub](https://github.com/megagringa/FullStack_Acamica/tree/main/PodcastJPL) 
+ - Proyecto 2: gifOs - [Demo](https://megagringa.github.io/FullStack_Acamica/gifOS/gifos.html) - [GitHub](https://github.com/megagringa/FullStack_Acamica/tree/main/gifOS) 
  - Proyecto 3: DelilahResto - [GitHub](https://github.com/megagringa/FullStack_Acamica/tree/main/DelilahResto) 
